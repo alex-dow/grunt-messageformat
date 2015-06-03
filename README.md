@@ -49,6 +49,8 @@ console.log(manyResults);
 console.log(noResults);
 ```
 
+You can use the prefix and suffix options to wrap your JS code in AMD-style defines, Node-friend module exports, licenses, or anything else you wish.
+
 ## msgfmt task
 _Run this task with `grunt msgfmt` command._
 
@@ -60,4 +62,18 @@ Task targets, files and options may be specified according to the grunt [Configu
 Type: `string`
 Default: ''
 
-The
+Prepend this string to the beginning of the compiled JS file
+
+#### suffix
+Type: `string`
+Default: ''
+
+Append this string to the beginning of the compiled JS file
+
+#### format
+Type: `string`
+Default: ''
+
+Specify the format of the resource file(s) being processed. Only `json` and `properties` are supported values.
+
+If left blank, then the format will be inferred from the filename's extension.
