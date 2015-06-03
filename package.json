@@ -1,5 +1,5 @@
 {
-    "name": "grunt-messageformat",
+    "name": "grunt-messageformat-compiler",
     "description": "Grunt task to create compiled resource bundles using MessageFormat",
     "version": "0.0.1",
     "author": {

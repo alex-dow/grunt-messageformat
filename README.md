@@ -1,4 +1,4 @@
-# grunt-messageformat v0.0.1
+# grunt-messageformat-compiler v0.0.1
 > Generate compiled, localized string resources using MessageFormat
 
 ## Getting Started
@@ -7,18 +7,20 @@ This plugin requires Grunt `>=0.4.0`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-messageformat --save-dev
+npm install grunt-messageformat-compiler --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-messageformat');
+grunt.loadNpmTasks('grunt-messageformat-compiler');
 ```
 
 This plugin will use [MessageFormat](https://github.com/SlexAxton/messageformat.js/) (https://github.com/SlexAxton/messageformat.js/) to process your locale files. Currently, locale files structured as JSON or as [Properties](http://en.wikipedia.org/wiki/.properties) files are suppored.
 
 Each string is expected to follow the [ICU MessageFormat](http://userguide.icu-project.org/formatparse/messages#TOC-MessageFormat) syntax.
+
+There is another project called [grunt-messageformat](https://github.com/gushov/grunt-messageformat) however it sadly seems to be unmaintained.
 
 ### Example JSON File
 
@@ -153,3 +155,4 @@ grunt.initConfig({
 
 * Support the native ICU ResourceBundle format.
 * Detect out-of-sync message files
+* Treat resource files as bundles, based on the ICU standard of organization
