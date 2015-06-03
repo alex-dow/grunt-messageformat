@@ -77,3 +77,79 @@ Default: ''
 Specify the format of the resource file(s) being processed. Only `json` and `properties` are supported values.
 
 If left blank, then the format will be inferred from the filename's extension.
+
+### Examples
+
+#### Basic Properties Files
+
+If your webapp also uses Java in some way, then using ICU4J and a common set of language files makes the most sense. In this case, using the Properties format is most suitable.
+
+So your project might look like this:
+
+```
+index.html
+js/app.js
+messages/en.properties
+messages/fr.properties
+```
+
+Your english properties file (en.properties) might look like this:
+
+```
+results=There {0, plural, one{ is one result } other{ are {0} results }}.
+greeting=Hello!
+```
+
+While your french one (fr.properties) might look like this:
+
+```
+results=Il {0, plural, zero {n'y a aucun resultat} one{ya un resultat} other{ ya {0} resultats}}.
+greeting=Salut!
+```
+
+Your gruntfile configuration might look like this then:
+```javascript
+grunt.initConfig({
+  msgfmt: {
+    allLocales: {
+      files: [{ src: 'messages/**/*', dest: 'build/messages' }],
+    }
+  }
+});
+```
+
+Your project will now look like this:
+
+```
+index.html
+js/app.js
+build/messages/en.js
+build/messages/fr.js
+messages/en.properties
+messages/fr.properties
+```
+
+You can now load `build/messages/en.js` or `build/messages/fr.js`, depending which one you need.
+
+#### RequireJS Compatible
+
+This is a similar example to the first one, but it wraps the compiled JS files in a define() call, making them AMD compliant.
+
+```javascript
+grunt.initConfig({
+  msgfmt: {
+    allLocales: {
+      files: [{ src: 'messages/**/*', dest: 'build/messages' }],
+      options: {
+        prefix: "define(function() {\n return ",
+        suffix: "\n});"
+      }
+    }
+  }
+});
+```
+
+## TODO List
+
+* Support the native ICU ResourceBundle format.
+* Detect out-of-sync message files
