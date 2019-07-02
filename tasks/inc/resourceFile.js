@@ -49,7 +49,7 @@ module.exports = {
     var locale = this.getLocaleName(fileName);
     var propObj = this.getMessageObj(fileName, format);
 
-    var mf = new MessageFormat();
+    var mf = new MessageFormat(locale);
 
     var mfunc = mf.compile(propObj);
     return mfunc;
